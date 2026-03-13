@@ -1,0 +1,75 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\C# estudo\\Conceitos\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{21A863F9-4930-A6D2-F823-22671AA62EB2}|Conceitos\\Conceitos.csproj|d:\\c# estudo\\conceitos\\conceitos\\conceitos\\metodos-retorno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{21A863F9-4930-A6D2-F823-22671AA62EB2}|Conceitos\\Conceitos.csproj|solutionrelative:conceitos\\conceitos\\metodos-retorno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{21A863F9-4930-A6D2-F823-22671AA62EB2}|Conceitos\\Conceitos.csproj|d:\\c# estudo\\conceitos\\conceitos\\conceitos\\metodos-void.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{21A863F9-4930-A6D2-F823-22671AA62EB2}|Conceitos\\Conceitos.csproj|solutionrelative:conceitos\\conceitos\\metodos-void.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{21A863F9-4930-A6D2-F823-22671AA62EB2}|Conceitos\\Conceitos.csproj|d:\\c# estudo\\conceitos\\conceitos\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{21A863F9-4930-A6D2-F823-22671AA62EB2}|Conceitos\\Conceitos.csproj|solutionrelative:conceitos\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "metodos-retorno.cs",
+              "DocumentMoniker": "D:\\C# estudo\\Conceitos\\Conceitos\\conceitos\\metodos-retorno.cs",
+              "RelativeDocumentMoniker": "Conceitos\\conceitos\\metodos-retorno.cs",
+              "ToolTip": "D:\\C# estudo\\Conceitos\\Conceitos\\conceitos\\metodos-retorno.cs",
+              "RelativeToolTip": "Conceitos\\conceitos\\metodos-retorno.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwC4AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T01:06:18.038Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "metodos-void.cs",
+              "DocumentMoniker": "D:\\C# estudo\\Conceitos\\Conceitos\\conceitos\\metodos-void.cs",
+              "RelativeDocumentMoniker": "Conceitos\\conceitos\\metodos-void.cs",
+              "ToolTip": "D:\\C# estudo\\Conceitos\\Conceitos\\conceitos\\metodos-void.cs",
+              "RelativeToolTip": "Conceitos\\conceitos\\metodos-void.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T00:59:20.553Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\C# estudo\\Conceitos\\Conceitos\\Program.cs",
+              "RelativeDocumentMoniker": "Conceitos\\Program.cs",
+              "ToolTip": "D:\\C# estudo\\Conceitos\\Conceitos\\Program.cs",
+              "RelativeToolTip": "Conceitos\\Program.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAxwBYAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-10T14:16:27.344Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

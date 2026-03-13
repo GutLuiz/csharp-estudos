@@ -1,0 +1,14 @@
+D:\C# estudo\Conceitos\Conceitos\bin\Debug\net8.0\Conceitos.exe
+D:\C# estudo\Conceitos\Conceitos\bin\Debug\net8.0\Conceitos.deps.json
+D:\C# estudo\Conceitos\Conceitos\bin\Debug\net8.0\Conceitos.runtimeconfig.json
+D:\C# estudo\Conceitos\Conceitos\bin\Debug\net8.0\Conceitos.dll
+D:\C# estudo\Conceitos\Conceitos\bin\Debug\net8.0\Conceitos.pdb
+D:\C# estudo\Conceitos\Conceitos\obj\Debug\net8.0\Conceitos.GeneratedMSBuildEditorConfig.editorconfig
+D:\C# estudo\Conceitos\Conceitos\obj\Debug\net8.0\Conceitos.AssemblyInfoInputs.cache
+D:\C# estudo\Conceitos\Conceitos\obj\Debug\net8.0\Conceitos.AssemblyInfo.cs
+D:\C# estudo\Conceitos\Conceitos\obj\Debug\net8.0\Conceitos.csproj.CoreCompileInputs.cache
+D:\C# estudo\Conceitos\Conceitos\obj\Debug\net8.0\Conceitos.dll
+D:\C# estudo\Conceitos\Conceitos\obj\Debug\net8.0\refint\Conceitos.dll
+D:\C# estudo\Conceitos\Conceitos\obj\Debug\net8.0\Conceitos.pdb
+D:\C# estudo\Conceitos\Conceitos\obj\Debug\net8.0\Conceitos.genruntimeconfig.cache
+D:\C# estudo\Conceitos\Conceitos\obj\Debug\net8.0\ref\Conceitos.dll
