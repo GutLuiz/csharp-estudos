@@ -21,9 +21,19 @@ namespace estudos
               {
                 executa se for false
               } 
+          - operadores para usar em condicionais:
+            == igual 
+            != diferente
+            > maior que
+            < menor que
+            >= maior ou igual
+            <= menor ou igual
+            && E (as duas true)
+            || OU (uma true basta)
+            ! diferente
          */
 
-      public void executar()
+        public void executar()
       {
         int idade = 20;
 
@@ -35,8 +45,6 @@ namespace estudos
             {
                 Console.WriteLine("menor de idade");
             }
-
-            double nota = 7.5;
 
             double nota = 7.5;
 
@@ -56,11 +64,7 @@ namespace estudos
             {
                 Console.WriteLine("Reprovado");
             }
-
-
-
         }
-
 
     }
 }

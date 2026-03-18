@@ -1,0 +1,15 @@
+D:\C# estudo\estudos\estudos\bin\Debug\net8.0\estudos.exe
+D:\C# estudo\estudos\estudos\bin\Debug\net8.0\estudos.deps.json
+D:\C# estudo\estudos\estudos\bin\Debug\net8.0\estudos.runtimeconfig.json
+D:\C# estudo\estudos\estudos\bin\Debug\net8.0\estudos.dll
+D:\C# estudo\estudos\estudos\bin\Debug\net8.0\estudos.pdb
+D:\C# estudo\estudos\estudos\obj\Debug\net8.0\estudos.GeneratedMSBuildEditorConfig.editorconfig
+D:\C# estudo\estudos\estudos\obj\Debug\net8.0\estudos.AssemblyInfoInputs.cache
+D:\C# estudo\estudos\estudos\obj\Debug\net8.0\estudos.AssemblyInfo.cs
+D:\C# estudo\estudos\estudos\obj\Debug\net8.0\estudos.csproj.CoreCompileInputs.cache
+D:\C# estudo\estudos\estudos\obj\Debug\net8.0\estudos.sourcelink.json
+D:\C# estudo\estudos\estudos\obj\Debug\net8.0\estudos.dll
+D:\C# estudo\estudos\estudos\obj\Debug\net8.0\refint\estudos.dll
+D:\C# estudo\estudos\estudos\obj\Debug\net8.0\estudos.pdb
+D:\C# estudo\estudos\estudos\obj\Debug\net8.0\estudos.genruntimeconfig.cache
+D:\C# estudo\estudos\estudos\obj\Debug\net8.0\ref\estudos.dll
