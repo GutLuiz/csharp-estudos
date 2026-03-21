@@ -71,8 +71,5 @@ namespace estudos
             ctb.Sacar(100m);
             Console.WriteLine(ctb.ObterSaldo());
         }
-
-
-
     }
 }

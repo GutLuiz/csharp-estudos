@@ -26,7 +26,7 @@ namespace estudos.exercicios
 
            public void Dados()
             {
-                Console.WriteLine("Meu nome e" + _nome + "tenho " + _idade + " de idade, " + _altura + " de altura e " + _salario + " de salario");
+                Console.WriteLine("Meu nome e" + _nome + " tenho " + _idade + " de idade, " + _altura + " de altura e " + _salario + " de salario");
             }
         }
         public void Executar()

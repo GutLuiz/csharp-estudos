@@ -7,12 +7,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="listas.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="listas.cs" />
-  </ItemGroup>
-
 </Project>
