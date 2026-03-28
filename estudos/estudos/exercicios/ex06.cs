@@ -70,9 +70,7 @@ namespace estudos.exercicios
             }
             public bool ValidarTudo(Cliente c)
             {
-                ValidadorCliente v = new ValidadorCliente();
-    
-                if (v.ValidarNome(c.ObterNome()) && v.ValidarEmail(c.ObterEmail()) && v.ValidarIdade(c.ObterIdade()) && v.ValidarSaldo(c.ObterSaldo()))
+                if (ValidarNome(c.ObterNome()) && ValidarEmail(c.ObterEmail()) && ValidarIdade(c.ObterIdade()) && ValidarSaldo(c.ObterSaldo()))
                 {
                     return true;
                 }
