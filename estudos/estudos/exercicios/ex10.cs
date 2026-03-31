@@ -64,7 +64,7 @@ namespace estudos.exercicios
             {
                 if(_status == "Aberto")
                 {
-                    prd.Add(new Produto(p.ObterProduto(), p.ObterPreco(), p.ObterCategoria()));
+                    _prd.Add(new Produto(p.ObterProduto(), p.ObterPreco(), p.ObterCategoria()));
                 }
                 else
                 {
@@ -75,7 +75,7 @@ namespace estudos.exercicios
             {
                 decimal total = 0;
 
-                foreach(Produto p in prd)
+                foreach(Produto p in _prd)
                 {
                     total += p.ObterPreco();
                 }
@@ -88,7 +88,7 @@ namespace estudos.exercicios
             public void ExibirPedido()
             {
                 Console.WriteLine("codigo: " + _pedido_id + ", cliente: " + _cliente);
-                foreach(Produto p in prd) 
+                foreach(Produto p in _prd) 
                 {
                     string produto = p.ObterProduto();
                     string categoria = p.ObterCategoria();
