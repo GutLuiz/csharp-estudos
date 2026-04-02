@@ -113,7 +113,7 @@ namespace estudos.exercicios
 
             dp.ExibirMaiorSalario();
 
-            dp.CalcularFolha();
+            Console.WriteLine("Total da folha: " + dp.CalcularFolha());
         }
     }
 }
