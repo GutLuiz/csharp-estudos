@@ -53,8 +53,8 @@ namespace estudos
             }
         }
 
-        Conta1 c1 = new Conta1();
+
         //c._saldo = -99999m; =  não compila — privado
-        c1.Depositar(-99999m); 
+        // c.Depositar(-99999m); // passa pela validação e bloqueia
     }
 }

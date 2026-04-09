@@ -136,7 +136,7 @@ namespace estudos.exercicios
 
             e.ExibirAbaixoDoMinimo(10);
 
-            e.ExibirMaisValioso();
+            Console.WriteLine("Mais valioso: " + e.ExibirMaisValioso());
 
             Console.WriteLine("Valor total do estoque: " + e.CalculcarValorTotalEstoque());
         }
