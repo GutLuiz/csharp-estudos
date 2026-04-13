@@ -91,6 +91,11 @@ namespace estudos.exercicios
             private string _nomeEmpresa;
             private List<Funcionario> _f = new List<Funcionario>();
 
+            public Empresa(string nome) 
+            {
+                _nomeEmpresa = nome;
+            }
+
             public void AdicionarFuncionario(Funcionario f)
             {
                 _f.Add(f);
@@ -138,7 +143,7 @@ namespace estudos.exercicios
             Estagiario e1 = new Estagiario("Nivaldo", 5556888, 500m, "12/05/2026");
             Estagiario e2 = new Estagiario("juliana", 15556888, 500m, "12/12/2026");
 
-            Empresa e = new Empresa();
+            Empresa e = new Empresa("LGN SOLUCOES");
 
             e.AdicionarFuncionario(g1);
             e.AdicionarFuncionario(g2);
