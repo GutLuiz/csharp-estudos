@@ -116,11 +116,9 @@ namespace estudos.exercicios
 
             c.DesativarCliente(cliente3);
 
-
             if (cliente1 != null) c.ExibirCliente(cliente1);
-            if (cliente2 != null) c.ExibirCliente(cliente2); // esse é o inválido — null
+            if (cliente2 != null) c.ExibirCliente(cliente2); 
             if (cliente3 != null) c.ExibirCliente(cliente3);
-
 
         }
     }
