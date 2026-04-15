@@ -52,9 +52,19 @@ namespace estudos.exercicios
             private string _nomeCliente;
             private string _email;
             private List<Produto> _prd;
+
             private decimal _total;
             private string _status;
             private string _data;
+
+            public Pedido(string nome, string email, List<Produto> prd)
+            {
+                _nomeCliente = nome;
+                _email = email;
+                _prd = prd;
+                _data = DateTime.Now.ToString("dd/MM/yyyy");
+
+            }
 
             public void AdicionarProduto(Produto p)
             {
@@ -77,9 +87,48 @@ namespace estudos.exercicios
                 }
                 return pedido;
             }
-
         }
+        public class PedidoService
+        {
+            public Pedido CriarPedido(PedidoDto dto)
+            {
+                if(dto.NomeCliente == "")
+                {
+                    Console.WriteLine("Nome do cliente nao pode ser vazio");
+                    return null;
+                }
+                else if (!dto.Email.Contains("@")){
+                    Console.WriteLine("O email precisa ter @");
+                    return null;
+                }
+                else if (!dto.PrdDto.Any())
+                {
+                    Console.WriteLine("Sua lista de produtos esta vazia!");
+                    return null;
+                }
+                else
+                {
+                   
+                    foreach (ProdutoDto p in dto.PrdDto)
+                    {
+                        if (p.Preco <= 0)
+                        {
+                            Console.WriteLine("Preco do produto tem que ser maior que 0.");
+                            return null;
+                        }
+                        else if (p.Quantidade <= 0)
+                        {
+                            Console.WriteLine("Quantidade do produto tem que ser maior que 0");
+                            return null;
+                        }
+                    }
+                    var pedido = new Pedido(dto.NomeCliente, dto.Email, new List<Produto>());
 
 
+
+                    return pedido;
+                }
+            }
+        }
     }
 }
