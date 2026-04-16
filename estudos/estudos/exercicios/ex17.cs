@@ -57,13 +57,18 @@ namespace estudos.exercicios
             private string _status;
             private string _data;
 
-            public Pedido(string nome, string email, List<Produto> prd)
+            public Pedido(string nome, string email)
             {
                 _nomeCliente = nome;
                 _email = email;
-                _prd = prd;
+                _status = "Aguardando Pagamento";
                 _data = DateTime.Now.ToString("dd/MM/yyyy");
 
+            }
+
+            public string ObterStatus()
+            {
+                return _status;
             }
 
             public void AdicionarProduto(Produto p)
@@ -92,12 +97,12 @@ namespace estudos.exercicios
         {
             public Pedido CriarPedido(PedidoDto dto)
             {
-                if(dto.NomeCliente == "")
+                if (dto.NomeCliente == "")
                 {
                     Console.WriteLine("Nome do cliente nao pode ser vazio");
                     return null;
                 }
-                else if (!dto.Email.Contains("@")){
+                else if (!dto.Email.Contains("@")) {
                     Console.WriteLine("O email precisa ter @");
                     return null;
                 }
@@ -108,7 +113,7 @@ namespace estudos.exercicios
                 }
                 else
                 {
-                   
+
                     foreach (ProdutoDto p in dto.PrdDto)
                     {
                         if (p.Preco <= 0)
@@ -122,13 +127,106 @@ namespace estudos.exercicios
                             return null;
                         }
                     }
-                    var pedido = new Pedido(dto.NomeCliente, dto.Email, new List<Produto>());
+                    var pedido = new Pedido(dto.NomeCliente, dto.Email);
 
-
+                    foreach (ProdutoDto p in dto.PrdDto)
+                    {
+                        pedido.AdicionarProduto(new Produto(p.Nome, p.Preco, p.Quantidade));
+                    }
 
                     return pedido;
                 }
             }
+            public void AprovarPedido(Pedido p)
+            {
+                p.AlterarStatus("Aprovado");
+            }
+            public void CancelarPedido(Pedido p)
+            {
+                p.AlterarStatus("Cancelado");
+            }
+            public void ExibirPedido(Pedido p)
+            {
+                Console.WriteLine(p.ToString());
+            }
+        }
+        public void Executar()
+        {
+            var prd = new ProdutoDto
+            {
+                Nome = "arroz",
+                Preco = 15m,
+                Quantidade = 29
+            };
+
+            var prd01 = new ProdutoDto
+            {
+                Nome = "macarrao",
+                Preco = 35m,
+                Quantidade = 229
+            };
+
+            var prd001 = new ProdutoDto
+            {
+                Nome = "tomate",
+                Preco = 5m,
+                Quantidade = 5
+            };
+
+            var pdd = new PedidoDto
+            {
+                NomeCliente = "Gustavo",
+                Email = "Gustavo@GMAIL.COM",
+                PrdDto = new List<ProdutoDto>()
+            };
+
+            pdd.PrdDto.Add(prd);
+            pdd.PrdDto.Add(prd01);
+            pdd.PrdDto.Add(prd001);
+
+            var prd2 = new ProdutoDto
+            {
+                Nome = "feijao",
+                Preco = 25m,
+                Quantidade = 129
+            };
+
+            var pdd2 = new PedidoDto
+            {
+                NomeCliente = "kaue",
+                Email = "kaueGMAIL.COM",
+                PrdDto = new List<ProdutoDto>()
+            };
+
+            pdd2.PrdDto.Add(prd2);
+
+            var prd3 = new ProdutoDto
+            {
+                Nome = "carne",
+                Preco = 0,
+                Quantidade = 19
+            };
+
+            var pdd3 = new PedidoDto
+            {
+                NomeCliente = "jose",
+                Email = "jose@GMAIL.COM",
+                PrdDto = new List<ProdutoDto>()
+            };
+
+            pdd3.PrdDto.Add(prd3);
+
+            var service = new PedidoService();
+
+            var pedido1 = service.CriarPedido(pdd2);
+            var pedido2 = service.CriarPedido(pdd3);
+            var pedido3 = service.CriarPedido(pdd);
+
+            service.AprovarPedido(pedido3);
+
+            service.ExibirPedido(pedido1);
+            service.ExibirPedido(pedido2);
+            service.ExibirPedido(pedido3);
         }
     }
 }
