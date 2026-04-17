@@ -63,6 +63,7 @@ namespace estudos.exercicios
                 _email = email;
                 _status = "Aguardando Pagamento";
                 _data = DateTime.Now.ToString("dd/MM/yyyy");
+                _total = 
 
             }
 
@@ -75,9 +76,14 @@ namespace estudos.exercicios
             {
                 _prd.Add(p);
             }
-            public decimal ObterTotal()
+            public void ObterTotal()
             {
-                return _total;
+                decimal total = 0;
+                foreach(Produto p in _prd)
+                {
+                    total += p.ObterPreco() * p.ObterQuantidade(); 
+                }
+
             }
             public void AlterarStatus(string status)
             {
