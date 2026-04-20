@@ -51,7 +51,7 @@ namespace estudos.exercicios
         {
             private string _nomeCliente;
             private string _email;
-            private List<Produto> _prd;
+            private List<Produto> _prd = new List<Produto>();
 
             private decimal _total;
             private string _status;
@@ -63,7 +63,7 @@ namespace estudos.exercicios
                 _email = email;
                 _status = "Aguardando Pagamento";
                 _data = DateTime.Now.ToString("dd/MM/yyyy");
-                _total = 
+                _total = 0;
 
             }
 
@@ -75,16 +75,9 @@ namespace estudos.exercicios
             public void AdicionarProduto(Produto p)
             {
                 _prd.Add(p);
+                _total += p.ObterPreco() * p.ObterQuantidade();
             }
-            public void ObterTotal()
-            {
-                decimal total = 0;
-                foreach(Produto p in _prd)
-                {
-                    total += p.ObterPreco() * p.ObterQuantidade(); 
-                }
-
-            }
+     
             public void AlterarStatus(string status)
             {
                 _status = status;
@@ -230,9 +223,9 @@ namespace estudos.exercicios
 
             service.AprovarPedido(pedido3);
 
-            service.ExibirPedido(pedido1);
-            service.ExibirPedido(pedido2);
-            service.ExibirPedido(pedido3);
+            if (pedido1 != null) service.ExibirPedido(pedido1);
+            if (pedido2 != null) service.ExibirPedido(pedido2);
+            if (pedido3 != null) service.ExibirPedido(pedido3);
         }
     }
 }
