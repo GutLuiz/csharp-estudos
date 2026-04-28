@@ -35,5 +35,18 @@ namespace estudos.exercicios
             p.Dados();
         }
 
+
+        public class Palindromo
+        {
+            public bool funcao(string palavraUsu)
+            {
+                if(palavraUsu.Reverse() == palavraUsu)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
     }
 }
