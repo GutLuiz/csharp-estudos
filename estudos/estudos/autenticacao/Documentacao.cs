@@ -39,6 +39,10 @@ namespace estudos.autenticacao
             public string PasswordHash { get; set; }
         }
 
+        /*
+           = Agora como esse exemplo e meio simples eu consigo jogar tudo no controller.
+         */
+
 
 
 
