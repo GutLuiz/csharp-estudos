@@ -85,8 +85,101 @@ namespace estudos.autenticacao
             - passo um VERIFY do BYCRIPT, nele consigo ver se tem a mesma senha, passando as duas senhas como parametro
             - Se for falso falso essa variavel eu retorno credencial invalida
             - retorno um generateToken desse detemrinando usuario 
-            - retorno o token (por enquanto)
+            - retorno o TOKEN (por enquanto)
+
+             public IActionResult Login([FromBody] LoginDto dto)
+            {
+                var user = _context.Users
+                    .FirstOrDefault(u => u.Email == dto.Email);
+
+                if (user == null)
+                {
+                    return Unauthorized("Credenciais inválidas");
+                }
+
+                var validPassword = BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash);
+
+                if (!validPassword)
+                {
+                    return Unauthorized("Credenciais inválidas");
+                }
+                
+                var token = _tokenService.GenerateToken(user);
+
+                return Ok(new
+                {
+                    token = token
+                });
+            }
+            // sei que n tem que retornar o token assim mas pra teste, e o suficiente.
+            // preciso melhorar osa logs, mensagens mais claras.
+            // preiciso ver se tem a necessidade de mais validacoes dentro desses dois controllers
          */
+
+
+        /*
+          -> O QUE SERIA ESSE TOKEN RETORNANDO NO MEU EXEMPLO DE LOGIN?
+            - Basicamente do que eu sei e uma "chave" ele tem tres partes e e totalmente aleatorio
+            - ele serve pra autorizar o usuario a fazer uma determinada acao que precise de AUTORIZACAO
+            - por exemplo excluir uma categoria, esse token valida q esse usuario pode fazer isso.
+            - ele pode ter diverser claims (corpo do token que busca essa validacao) mas por enquanto vamos focar no padrao
+            
+            // primeiro eu chamo essas duas linhas de codigo config (eu acho).
+             var key = Encoding.ASCII.GetBytes(JwtSettings.Key);
+             var tokenHandler = new JwtSecurityTokenHandler();
+            // depois eu posso usar o token descriptor que faz uma serie de configuracoes do meu token
+             var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                    new Claim(ClaimTypes.Email, user.Email)
+                }),
+                Expires = DateTime.UtcNow.AddHours(2),
+                Issuer = JwtSettings.Issuer,
+                Audience = JwtSettings.Audience,
+                SigningCredentials = new SigningCredentials(
+                    new SymmetricSecurityKey(key),
+                    SecurityAlgorithms.HmacSha256Signature
+                )
+            };
+            // o que eu vou focar agora e no SUBJECT. Onde tem o CLAIMSIDENTITY
+            // ele cria uma claim colocando o id e o email para identificar nosso usuario
+            // importanate passar como parametro tudo isso. acho qye tb tem que ser em string
+
+            // dps cria o token e retorna
+            
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
+
+            importante tambem colocar isso no program mas n sei mt o que e, vou pesquisar depois
+
+            builder.Services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(options =>
+            {
+                options.RequireHttpsMetadata = false;
+                options.SaveToken = true;
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidateLifetime = true,
+
+                    ValidIssuer = JwtSettings.Issuer,
+                    ValidAudience = JwtSettings.Audience,
+                    IssuerSigningKey = new SymmetricSecurityKey(key)
+                };
+            });
+
+
+         */
+
+
 
 
 
