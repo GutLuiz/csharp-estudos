@@ -41,6 +41,51 @@ namespace estudos.autenticacao
 
         /*
            = Agora como esse exemplo e meio simples eu consigo jogar tudo no controller.
+
+          -> Registro (passos que fiz no controller, tenho que ver se precisa de mais validacoes):
+
+             - Primeiro preciso ver se tem algum usuario que seja igual a que eu vou passar
+               caso essa variavel (fiz a comparacao se existe o mesmo email) seja diferente de null
+               importante passar um retorno falando que ja existe esse usuario
+            
+             - Se n retornar e realmente esse usuario for null, crio uma variavel onde vai guardar a senha
+               passada. Neste caso essa senha vai estar criptografada com o BCRYPT
+             
+             - Instancio um novo usuario com o dto de email e essa variavel da senha criptografada
+             
+             - Neste exemplo estou usando o EF entao :
+                == adiciono um novo usuario passando a minha variavel instanciada.
+                == salvo as modificacoes
+                == retorno um ok 
+
+            var existingUser = _context.Users
+                .FirstOrDefault(u => u.Email == dto.Email);
+
+            if (existingUser != null)
+            {
+                return BadRequest("Usuário já existe");
+            }
+
+            var passwordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password);
+
+            var user = new User
+            {
+                Email = dto.Email,
+                PasswordHash = passwordHash
+            };
+
+            _context.Users.Add(user);
+            _context.SaveChanges();
+
+            return Ok("Usuário criado");
+
+            -> Login
+            - verifico se existe esse login
+            - se essa variavel onde verifico tiver nulo, caso esse email for nulo falo que tem alguma crtedencial invalida
+            - passo um VERIFY do BYCRIPT, nele consigo ver se tem a mesma senha, passando as duas senhas como parametro
+            - Se for falso falso essa variavel eu retorno credencial invalida
+            - retorno um generateToken desse detemrinando usuario 
+            - retorno o token (por enquanto)
          */
 
 
