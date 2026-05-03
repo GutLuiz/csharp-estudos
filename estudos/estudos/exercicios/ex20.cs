@@ -26,8 +26,8 @@ namespace estudos.exercicios
         }
         public class ConsultaDto
         {
-            public PacientesDto paciente { get; set; }
-            public MedicosDto medico { get; set; }
+            public string NomePaciente { get; set; }  
+            public string NomeMedico { get; set; }
         }
 
         public class Pacientes
@@ -67,7 +67,7 @@ namespace estudos.exercicios
             private string _especialidade;
             private decimal _valor_consulta;
 
-            private int _contagemid = 0;
+            private static int _contagemid = 0;
 
             public Medicos(string nome, string crm, string especialidade, decimal valor_consulta)
             {
@@ -96,7 +96,7 @@ namespace estudos.exercicios
             private string _status;
             private decimal _valor_cobrado;
 
-            private int _contagemid = 0;
+            private static int _contagemid = 0;
 
             public Consultas(Pacientes paciente, Medicos medico)
             {
@@ -105,7 +105,7 @@ namespace estudos.exercicios
                 _paciente = paciente;
                 _medico = medico;
                 _data = DateTime.Now.ToString("dddd/MM/yyyy");
-                _status = "Consulta Marcada";
+                _status = "Realizada";
                 _valor_cobrado = Desconto();
             }
 
@@ -123,6 +123,21 @@ namespace estudos.exercicios
             public void AlterarStatus(string stts)
             {
                 _status = stts;
+            }
+            public string ObterStatus()
+            {
+                return _status;
+            }
+            public decimal ObterValorCobrado()
+            {
+                return _valor_cobrado;
+            }
+            public override string ToString()
+            {
+                return $"Id: {_id}, paciente: " +
+                    $"{_paciente}, medico:" +
+                    $" {_medico}, data:{_data}," +
+                    $" {_status}, valor cobrado: {_valor_cobrado}";
             }
         }
 
@@ -162,7 +177,7 @@ namespace estudos.exercicios
                     Console.WriteLine("Nome nao pode ser nulo");
                     return;
                 }
-                else if(dto.cpf == null )
+                else if(dto.cpf == 0 )
                 {
                     // fazendo a validacao errada pq tem q especificar algms coisa mas n leve isso em consideracao ok
                     Console.WriteLine("Cpf nao pode ser nulo");
@@ -230,7 +245,7 @@ namespace estudos.exercicios
                     Console.WriteLine("Especialidade nao pode ser nulo");
                     return;
                 }
-                else if (dto.valor_consulta == null)
+                else if (dto.valor_consulta == 0)
                 {
                     Console.WriteLine("valor_consulta nao pode ser nulo");
                     return;
@@ -242,43 +257,119 @@ namespace estudos.exercicios
                 }
             }
         }
+        public class ConsultaRepository
+        {
+            private List<Consultas> _c = new List<Consultas>();
+
+            public void SalvarConsulta(Consultas c)
+            {
+                _c.Add(c);
+            }
+            public List<Consultas> ListarConsultas()
+            {
+                return _c;
+            }
+            public List<Consultas> ListarConsultasRealizadas()
+            {
+                List<Consultas> realizadas = new List<Consultas>();
+                foreach (Consultas c in _c)
+                {
+                    if (c.ObterStatus() == "Realizada")
+                        realizadas.Add(c);
+                }
+                return realizadas;
+            }
+           
+           
+
+        }
         public class ConsultasServico
         {
             private PacienteRepository _pacienteRepository;
             private MedicosRepository _medicosRepository;
+            private ConsultaRepository _consultaRepository;
 
-            public ConsultasServico(PacienteRepository pacienteRepository, MedicosRepository medicosRepository)
+            public ConsultasServico(PacienteRepository pacienteRepository, MedicosRepository medicosRepository, ConsultaRepository consultaRepository)
             {
                 _pacienteRepository = pacienteRepository;
                 _medicosRepository = medicosRepository;
+                _consultaRepository = consultaRepository;
             }
 
             public void AgendarConsulta(ConsultaDto dto)
             {
-                if (dto.paciente == null)
+                if (dto.NomePaciente == null)
                 {
                     Console.WriteLine("Paciente nulo");
                     return;
                 }
-                else if(dto.medico == null)
+                else if(dto.NomeMedico == null)
                 {
                     Console.WriteLine("Medico nulo");
-                    return;
+                    return ;
                 }
                 else
                 {
-                    var paciente = _pacienteRepository.BuscarPorNome(dto.paciente.nome);
-                    var medico = _medicosRepository.BuscarPorNome(dto.medico.nome);
+                    var paciente = _pacienteRepository.BuscarPorNome(dto.NomePaciente);
+                    var medico = _medicosRepository.BuscarPorNome(dto.NomeMedico);
 
-                    new Consultas(paciente, medico);
+                    var consulta = new Consultas(paciente, medico);
+
+                    _consultaRepository.SalvarConsulta(consulta);
                 }
+            }
+            public decimal Faturamento()
+            {
+                decimal valorFaturamento = 0;
+                foreach (Consultas c in _consultaRepository.ListarConsultas())
+                {
+                    valorFaturamento += c.ObterValorCobrado();
+                }
+                return valorFaturamento;
             }
             public void CancelarConsulta(Consultas c)
             {
                 c.AlterarStatus("Cancelado");
             }
+            public List<Consultas> ListarConsultas()
+            {
+                return _consultaRepository.ListarConsultas();
+            }
+            public List<Consultas> ListarConsultasRealizadas()
+            {
+                return _consultaRepository.ListarConsultasRealizadas();
+            }
+
+
         }
-        
+        public void Executar()
+        {
+            PacienteRepository pr = new PacienteRepository();
+            MedicosRepository mr = new MedicosRepository();
+            ConsultaRepository cr = new ConsultaRepository();
+
+            PacienteServico ps = new PacienteServico(pr);
+            MedicoServico ms = new MedicoServico(mr);
+            ConsultasServico cs = new ConsultasServico(pr, mr,cr);
+
+            PacientesDto Paciente1 = new PacientesDto { nome = "Gustavo", cpf = 1231313104, data_nascimento = "01/05/2025", plano = true };
+            MedicosDto Medico1 = new MedicosDto { nome = "juliana", crm = "2dadadadad", especialidade = "dermatologista", valor_consulta = 100 };
+            ConsultaDto consulta1 = new ConsultaDto { NomeMedico = Medico1.nome, NomePaciente = Paciente1.nome};
+
+            ps.AdicionarPaciente(Paciente1);
+            ms.AdicionarMedico(Medico1);
+            cs.AgendarConsulta(consulta1);
+
+            foreach(var c in cs.ListarConsultas())
+            {
+                Console.WriteLine(c);
+            }
+            foreach(var c in cs.ListarConsultasRealizadas())
+            {
+                Console.WriteLine(c);
+            }
+
+        }
 
     }
 }
