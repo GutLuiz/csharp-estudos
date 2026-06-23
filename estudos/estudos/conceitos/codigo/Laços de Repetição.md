@@ -39,4 +39,27 @@ R = Existem alguns tipos de loops, os mais importante são:
 			usamos o IN pra usar por exemplo, essa lista. Assim conseguimos percorrer
 			por cada item.
 
+3 - Existem dentro desses loops alguns auxiliadores, quem são eles?
+R = Temos alguns "Auxiliadores" que são o CONTINUE e o BREAK, o contine ele basicamente
+pula aquela volta e continua para proxima. Já o break ele para o laço imediatamente
+	-- exemplo:
+		- break:
+			for (int i = 0; i < 10; i++)
+            {
+                if (i == 5)
+                {
+                    break; // parou quando i for igual a 5
+                }
+            }
+		- continue:
+			for (int i = 0; i < 10; i++)
+            {
+                if (i == 5)
+                {
+                    continue; // pulou o 5, continuou normalmente
+                }
+                Console.WriteLine(i);
+            }
+
+
 

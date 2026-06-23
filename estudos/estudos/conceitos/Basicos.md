@@ -13,7 +13,7 @@ R = É o framework que roda em cima do .NET. Nele você pode criar APIS REST, si
 aplicações web em geral.
 
 3 - O que é um framework?
-R = Framework é um facilitador, ele é um conjunto de ferramentas, bibliotecas e convenções qie
+R = Framework é um facilitador, ele é um conjunto de ferramentas, bibliotecas e convenções que
 te dão uma estrutura pra desenvolver. ele resolve problemas comuns de rota, acesso ao banco
 autenticação etc..
 

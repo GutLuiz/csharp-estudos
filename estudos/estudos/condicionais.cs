@@ -8,6 +8,8 @@ namespace estudos
 {
     internal class condicionais
     {
+        Console.WriteLine
+         nums[2,3,3];
         /*
           -> Condicionais:
            = É o código tomando decisões. Dependendo de uma condição, ele segue um caminho ou outro.
