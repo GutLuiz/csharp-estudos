@@ -13,6 +13,7 @@ public class program
         Palindromo p = new Palindromo();
 
         p.funcao(palavraUsu);
+        ;
 
     }
   
